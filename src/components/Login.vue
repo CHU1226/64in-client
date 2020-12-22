@@ -37,7 +37,7 @@ export default {
         alert(res.data.data);
       })
     }
-  },git initgit init
+  },
   props: [
     "api_url",
     "prefix"
