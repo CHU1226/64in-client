@@ -3,9 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="mt-5"></div>
-                    <div class="mt-5"></div>
-                    <h1 class="mt-5"><strong>Today</strong></h1>
+                    <h1 style="margin-top: 90px"><strong>Today</strong></h1>
                     <hr>
                     <div class="scroll_card">
                         <div class="card"

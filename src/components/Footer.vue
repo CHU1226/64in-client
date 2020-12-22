@@ -1,6 +1,16 @@
 <template>
   <div id="app">
-    <h2>blablabla description</h2>
+    <div class="h30"></div>
+    <div class="h30"></div>
+    <div class="h30"></div>
+    <div class="h30"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -11,5 +21,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .h30 {
+    height: 30px;
+  }
 </style>

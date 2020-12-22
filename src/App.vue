@@ -1,13 +1,16 @@
 <template>
   <div id="app">
+    <Navbar :user_profile="user_profile">
+
+    </Navbar>
     <transition name="slide" mode="out-in">
       <router-view :api_url="api_url" :prefix="prefix">
 
       </router-view>
     </transition>
-    <Navbar :user_profile="user_profile">
+    <Footer>
 
-    </Navbar>
+    </Footer>
   </div>
 </template>
 <script>
@@ -15,6 +18,7 @@
   import 'bootstrap/dist/css/bootstrap.css'
   import 'bootstrap-vue/dist/bootstrap-vue.css'
   import Navbar from "./components/Navbar";
+  import Footer from "./components/Footer";
   export default {
     name: "app",
     data() {
@@ -51,7 +55,8 @@
       }
     },
     components: {
-      Navbar: Navbar
+      Navbar: Navbar,
+      Footer: Footer
     }
   }
 </script>
@@ -66,7 +71,7 @@
   }
   .slide-enter-active,
   .slide-leave-active{
-    transition: opacity 1s,transform 1s;
+    transition: opacity .2s,transform .2s;
   }
   .slide-enter,
   .slide-leave-to{
