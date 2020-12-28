@@ -14,16 +14,13 @@
   </div>
 </template>
 <script>
-  import axios from 'axios';
-  import 'bootstrap/dist/css/bootstrap.css'
-  import 'bootstrap-vue/dist/bootstrap-vue.css'
   import Navbar from "./components/Navbar";
   import Footer from "./components/Footer";
   export default {
     name: "app",
     data() {
       return {
-        api_url: "http://192.168.72.3/64in-api/public/api/",
+        api_url: "http://localhost:8080/api/",
         prefix: {
           api_version: "v1/",
           user: "user/",
@@ -69,6 +66,38 @@
     padding-right: 15px;
     padding-left: 15px;
   }
+  .col-60 {
+    flex: 0 0 60%;
+    max-width: 60%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .col-70 {
+    flex: 0 0 70%;
+    max-width: 70%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .col-10pa {
+    flex: 0 0 10%;
+    max-width: 10%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .col-80 {
+    flex: 0 0 80%;
+    max-width: 80%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
   .slide-enter-active,
   .slide-leave-active{
     transition: opacity .2s,transform .2s;
@@ -105,5 +134,11 @@
   }
   .apple-blur {
     backdrop-filter: blur(30px) saturate(180%)!important;
+  }
+  .text-disabled {
+    color: #aaa!important;
+  }
+  .app800 {
+    width: 800px; position: relative; left: 50%; margin-left: -400px; box-sizing: border-box;
   }
 </style>

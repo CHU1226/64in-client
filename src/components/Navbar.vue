@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="container fixed-bottom apple-blur">
+        <div class="container fixed-bottom apple-blur" style="background: rgba(255, 255, 255, .6)">
             <div class="row navbar-inner">
                 <router-link to="/" class="col-20 fcc">
                     <i class="el-icon-files"></i>

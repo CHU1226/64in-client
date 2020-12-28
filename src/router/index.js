@@ -1,12 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Footer from "../components/Footer";
 import Login from "../components/Login";
 import Index from "../components/Index";
 import Search from "../components/Search";
 import Setting from "../components/Setting";
 import Profile from "../components/Profile";
 import NewPost from "../components/NewPost";
+import WorldChart from "../components/WorldChart";
 
 Vue.use(VueRouter);
 
@@ -39,6 +39,11 @@ const routes = [
     path: "/post/new",
     name: "NewPost",
     component: NewPost
+  },
+  {
+    path: "/demo/world_chart",
+    name: "WorldChart",
+    component: WorldChart
   }
 ];
 
