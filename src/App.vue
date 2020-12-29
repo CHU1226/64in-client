@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <Navbar :user_profile="user_profile">
-
-    </Navbar>
+    <Navbar :user_profile="user_profile"></Navbar>
     <transition name="slide" mode="out-in">
       <router-view :api_url="api_url" :prefix="prefix">
 
@@ -139,6 +137,9 @@
     color: #aaa!important;
   }
   .app800 {
-    width: 800px; position: relative; left: 50%; margin-left: -400px; box-sizing: border-box;
+    max-width: 770px; position: relative; left: 50%; transform: translate(-50%, 0); box-sizing: border-box;
+  }
+  .el-button:focus {
+    outline: none!important;
   }
 </style>

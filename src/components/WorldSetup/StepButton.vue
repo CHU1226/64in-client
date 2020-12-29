@@ -8,7 +8,7 @@
                         <el-button
                                 type="search"
                                 icon="el-icon-back"
-                                :disabled="now_state.back_disabled"
+                                :disabled="now_state.now <= 0 || now_state.back_disabled"
                                 @click="now_state.now -= 1"
                                 circle>
                         </el-button>
@@ -22,8 +22,8 @@
                         <el-button
                                 type="search"
                                 icon="el-icon-right"
-                                :disabled="now_state.next_disabled"
-                                @click="$emit('nextStep')"
+                                :disabled="now_state.now > (state_list.length - 2) ||now_state.next_disabled"
+                                @click="now_state.now += 1"
                                 circle>
                         </el-button>
                         <p class="w-100 text-center mt-2"
@@ -42,7 +42,8 @@
     export default {
         name: "StepButton",
         props: {
-            now_state: Object
+            now_state: Object,
+            state_list: Array
         }
     }
 </script>

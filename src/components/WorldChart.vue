@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="container mt-5">
+        <div class="container mt-5 container960">
             <div class="row">
                 <!--       page title        -->
                 <div class="col-2"></div>
@@ -22,9 +22,25 @@
                            :selected="selected"
                            :world_data="world_data">
             </CountrySelect>
+            <DataPrefer v-if="now_state.now == 2"
+                           :selected="selected"
+                           :world_data="world_data">
+            </DataPrefer>
+            <ChartPrefer v-if="now_state.now == 3"
+                        :selected="selected"
+                        :world_data="world_data">
+            </ChartPrefer>
+            <Notification v-if="now_state.now == 4"
+                         :selected="selected"
+                         :world_data="world_data">
+            </Notification>
+            <Privacy v-if="now_state.now == 5"
+                          :selected="selected"
+                          :world_data="world_data">
+            </Privacy>
             <StepButton
                     :now_state="now_state"
-                    @nextStep="nextStep()">
+                    :state_list="state_list">
             </StepButton>
         </div>
     </div>
@@ -34,6 +50,10 @@
     import StepButton from "./WorldSetup/StepButton";
     import IslandSelect from "./WorldSetup/IslandSelect";
     import CountrySelect from "./WorldSetup/CountrySelect";
+    import DataPrefer from "./WorldSetup/DataPrefer";
+    import ChartPrefer from "./WorldSetup/ChartPrefer";
+    import Notification from "./WorldSetup/Notification";
+    import Privacy from "./WorldSetup/Privacy";
     export default {
         name: "WorldChart",
         data() {
@@ -51,7 +71,13 @@
                         country_id: null
                     },
                     date_from: null,
-                    date_end: null
+                    date_end: null,
+                    prefer: {
+                        data_type: 1,
+                        chart_type: [],
+                        notification: [],
+                        countries: []
+                    }
                 },
                 state_list: [
                     "Welcome",
@@ -59,7 +85,6 @@
                     "Data Prefer",
                     "Chart Prefer",
                     "Notification",
-                    "Other Countries",
                     "Privacy"
                 ],
                 now_state: {
@@ -72,7 +97,11 @@
         components: {
             StepButton,
             IslandSelect,
-            CountrySelect
+            CountrySelect,
+            DataPrefer,
+            ChartPrefer,
+            Notification,
+            Privacy
         },
         created() {
             this.getIslands();
@@ -88,20 +117,6 @@
                     .get(this.$store.state.api.url + this.$store.state.api.version + "covid-19/countries/" + this.selected.location.island_id)
                     .then(response => this.world_data.countries = response.data.data);
             },
-            nextStep() {
-                switch (this.now_state.now) {
-                    case 0: // Welcome screen and Select island, sub-island
-                        if(this.selected.location.island_id != null) {
-                            this.getCountries();
-                            this.now_state.now ++;
-                        }
-                        break;
-                    case 1: // Select Country
-                        this.now_state.now ++;
-                        break;
-
-                }
-            },
             setCountry(country_id) {
 
             },
@@ -113,11 +128,16 @@
                     case 0:
                         this.now_state.back_disabled = true;
                         this.now_state.next_disabled = this.selected.location.island_id == null;
+                        if(! this.now_state.next_disabled)
+                            this.getCountries();
                         break;
                     case 1:
                         this.now_state.back_disabled = false;
                         this.now_state.next_disabled = this.selected.location.country_id == null;
                         break;
+                    case 2:
+                        this.now_state.back_disabled = false;
+                        this.now_state.next_disabled = this.selected.prefer.data_type == null;
                 }
             }
         },
@@ -139,7 +159,6 @@
         }
     }
 </script>
-
 <style scoped>
 
 </style>

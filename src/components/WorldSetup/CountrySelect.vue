@@ -55,7 +55,7 @@
         box-shadow: 0px 0px 10px 0px rgba(221, 221, 221, 0.9);
     }
     .row {
-        max-height: 500px;
+        max-height: 360px;
         overflow-x: unset;
         overflow-y: auto;
     }
